@@ -1,0 +1,50 @@
+{extend name="common/base" /}
+{block name="title"}系统首页{/block}
+{block name="css"}
+
+
+<link href="{__ADMIN_JS__}js/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+<link href="{__ADMIN_JS__}js/jquery-confirm/jquery-confirm.min.css" rel="stylesheet">
+{/block}
+{block name="body"}
+<div class="container-fluid p-t-15">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+
+          {foreach name="rz" item="v"}
+          <div class="jumbotron">
+            <h1 class="display-4">{$v.title}</h1>
+            <p class="lead">{$v.dasec}</p>
+            <hr class="my-4">
+<!--            <p class="text-truncate">{:mb_strimwidth($v.content,0,100,'...','utf-8')}</p>-->
+            <a class="btn btn-primary btn-lg" href="#" role="button" onclick="xqs({$v.id})">查看详情</a>
+          </div>
+          {/foreach}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{/block}
+{block name="js"}
+<script type="text/javascript" src="{__ADMIN_JS__}js/jquery-confirm/jquery-confirm.min.js"></script>
+<script type="text/javascript" src="{__ADMIN_JS__}js/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="{__ADMIN_JS__}js/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<!--以下是tree-grid的使用示例-->
+<link href="{__ADMIN_JS__}js/jquery-treegrid/jquery.treegrid.min.css" rel="stylesheet">
+<script type="text/javascript" src="{__ADMIN_JS__}js/jquery-treegrid/jquery.treegrid.min.js"></script>
+<script type="text/javascript" src="{__ADMIN_JS__}js/bootstrap-table/extensions/treegrid/bootstrap-table-treegrid.min.js"></script>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+  function xqs(id) {
+    parent.$(parent.document).data('multitabs').create({
+      iframe : true,                                // 指定为iframe模式，当值为false的时候，为智能模式，自动判断（内网用ajax，外网用iframe）。缺省为false。
+      title : '内容详情',                     // 标题（可选），没有则显示网址
+      url : '/admin/index/xiangq?id=' + id                    // 链接（必须），如为外链，强制为info页
+    }, true);
+  }
+</script>
+{/block}

@@ -1,0 +1,120 @@
+{extend name="common/base" /}
+{block name="title"}系统首页{/block}
+{block name="css"}
+
+
+<link href="{__ADMIN_JS__}js/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+<link href="{__ADMIN_JS__}js/jquery-confirm/jquery-confirm.min.css" rel="stylesheet">
+<style>
+    blockquote {
+        margin-bottom: 20px;
+        border-radius: 10px;
+        padding: 30px 40px;
+        color: #666;
+        background-color: #f8f8f8;
+        line-height: 1.5em;
+        position: relative;
+        font-style: normal;
+        font-size: 15px;
+        letter-spacing: .5px;
+        text-align: center;
+    }
+    blockquote:before {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        display: block;
+        width: 16px;
+        height: 14px;
+        background: url({__ADMIN_JS__}images/ceo-sy.png) no-repeat;
+        content: '';
+    }
+    blockquote:after {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        display: block;
+        width: 16px;
+        height: 14px;
+        background: url({__ADMIN_JS__}images/ceo-sy.png) -16px 0 no-repeat;
+        content: '';
+    }
+    * + blockquote {
+        margin-top: 20px;
+    }
+    blockquote p {
+        margin: 12px 0;
+        color: #666;
+    }
+    .card-body p {
+        line-height: 2;
+        margin-bottom: 30px;
+        font-size: 16px;
+    }
+    blockquote p:last-of-type {
+        margin-bottom: 0;
+    }
+    .ceo-shop-commont {
+        background: url({__ADMIN_JS__}images/icon-5.png) no-repeat;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+    }
+    .ceo-shop-commont {
+        margin: 20px auto 27px auto;
+    }
+    .ceo-shop-commont span {
+        display: inline-block;
+        font-size: 18px;
+        color: #243159;
+        font-weight: bold;
+        padding: 0 6px 0 22px;
+        background: #fff url({__ADMIN_JS__}images/icon-t.png) no-repeat center left;
+    }
+</style>
+{/block}
+{block name="body"}
+<div class="container-fluid p-t-15">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <header class="card-header">
+                        <h1 class="display-4">{$nr.title}</h1>
+                        <small><p class="lead text-pink">版本号：{$nr.versions}</p></small>
+                    </header>
+                    <div class="d-flex justify-content-center mb-3" style="margin-top: 10px;">
+                        <div class="p-2 flex-grow-1">发布时间：{:date('Y-m-d H:m:s',$nr.create_time)}</div>
+                        <div class="p-2">更新时间：{:date('Y-m-d H:m:s',$nr.update_time)}</div>
+                    </div>
+
+                    <blockquote><p>{$nr.dasec}</p></blockquote>
+
+                    <div class="ceo-shop-commont w-auto" id="xiangqing">
+                        <span class="turn1">详情介绍<a name="attribute"></a></span>
+                    </div>
+
+                    <div class="w-auto">
+                        {:htmlspecialchars_decode($nr.content)}
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script type="text/javascript" src="{__ADMIN_JS__}js/jquery-confirm/jquery-confirm.min.js"></script>
+<script type="text/javascript" src="{__ADMIN_JS__}js/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="{__ADMIN_JS__}js/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<!--以下是tree-grid的使用示例-->
+<link href="{__ADMIN_JS__}js/jquery-treegrid/jquery.treegrid.min.css" rel="stylesheet">
+<script type="text/javascript" src="{__ADMIN_JS__}js/jquery-treegrid/jquery.treegrid.min.js"></script>
+<script type="text/javascript" src="{__ADMIN_JS__}js/bootstrap-table/extensions/treegrid/bootstrap-table-treegrid.min.js"></script>
+{/block}
+{block name="script"}
+
+{/block}

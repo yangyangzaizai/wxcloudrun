@@ -1,0 +1,26 @@
+<div class="tab-pane active">
+
+    <form onsubmit="return false" action="#!" method="post" name="tokenForm" class="edit-form" id="jwttoken">
+        <input type="hidden" name="typename" value="jwttoken">
+        <div class="form-group">
+            <label for="iss">Token签发组织</label>
+            <input class="form-control" type="text" id="iss" name="iss" value="{$jwttoken.iss|default=''}" placeholder="请输入Token签发组织">
+        </div>
+        <div class="form-group">
+            <label for="aud">Token签发作者</label>
+            <input class="form-control" type="text" id="aud" name="aud" value="{$jwttoken.aud|default=''}" placeholder="请输入Token签发作者">
+        </div>
+        <div class="form-group">
+            <label for="secrect">Token Secrect</label>
+            <input class="form-control" type="password" id="secrect" name="secrect" value="{$jwttoken.secrect|default=''}" placeholder="请输入Token Secrect">
+        </div>
+        <div class="form-group">
+            <label for="exptime">Token过期时间</label>
+            <input class="form-control" type="text" id="exptime" name="exptime" value="{$jwttoken.exptime|default=''}" placeholder="请输入Token过期时间">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary m-r-5" onclick="post_submit('jwttoken')">确 定</button>
+        </div>
+    </form>
+
+</div>
